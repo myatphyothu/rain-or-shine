@@ -61,10 +61,14 @@ def display_weather_data(data, imperial):
     city, description, icon, temperature = data['name'],data['weather'][0]['description'], data['weather'][0]['icon'], data['main']['temp']
     units = '°F' if imperial is True else '°C'
 
-    # py_console.print_colorfully(f'{city:>20}', 'cyan')
-    print(f'{city:>20}', end='')
-    print(f'\t{description.capitalize():<20}', end=' ')
-    print(f'({temperature}{units})')
+    # py_console.print_colorfully(f'{city:'>20}', 'cyan')
+    py_console.write_colorfully2(data=f'{city:>20}', reversed=True)
+    py_console.write_colorfully2(data=f'\t{description.capitalize():<20}', color='yellow', bold=True)
+    py_console.write_colorfully2(data=f'({temperature}{units})', bgcolor='yellow', color='blue')
+    py_console.write_colorfully2(data='\n')
+    # print(f'{city:>20}', end='')
+    # print(f'\t{description.capitalize():<20}', end=' ')
+    # print(f'({temperature}{units})')
 
 
 if __name__ == '__main__':
